@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Treatment_Estimation extends TestBase {
     @Test
     public void Treat_Estimate() throws InterruptedException{
-       Doctor_Login();
+        Doctor_Login();
 //Go to Daily Appointments page
         driver.findElement(By.cssSelector(".md-menu-toolbar > a > span")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector
@@ -36,7 +36,8 @@ public class Treatment_Estimation extends TestBase {
         }
 
 //Doctor's sign pop-up
-        while (isElementPresent(By.cssSelector("md-dialog > md-dialog-content input"))){
+        var testinput = "md-dialog > md-dialog-content input";
+        while (isElementPresent(By.cssSelector(testinput))){
             driver.findElement(By.cssSelector("md-dialog > md-dialog-content input")).sendKeys("AUTOTEST");
             driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
             TimeUnit.SECONDS.sleep(1);

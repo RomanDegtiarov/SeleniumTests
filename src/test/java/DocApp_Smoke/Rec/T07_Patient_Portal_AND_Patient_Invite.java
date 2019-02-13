@@ -46,13 +46,16 @@ public class T07_Patient_Portal_AND_Patient_Invite extends TestBase{
         JavascriptExecutor js_02 = (JavascriptExecutor) driver;
         js_02.executeScript("document.body.style.zoom='100%'");
 
-        driver.findElement(By.cssSelector("input#lastNameEdit")).sendKeys("Green");
-        driver.findElement(By.cssSelector("input#firstNameEdit")).sendKeys("John");
+//Fill out patient invite info
+        driver.findElement(By.cssSelector("input#lastNameEdit")).sendKeys("A");
+//        driver.findElement(By.cssSelector("input#firstNameEdit")).sendKeys("John");
+//        driver.findElements(By.cssSelector("div.modal-content > .modal-footer > div > div > button.btn-primary")).click();
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.cssSelector("div.modal-content > .modal-footer > div > div > button.btn-primary")));
         driver.findElement(By.cssSelector("div.modal-content > .modal-footer > div > div > button.btn-primary")).click();
         driver.findElement(By.cssSelector("input#dueDateId")).sendKeys("01/01/2030");
         driver.findElement(By.cssSelector("form > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > input")).sendKeys("4436728871");
+        driver.findElement(By.cssSelector("textarea.form-control")).sendKeys("Patient invited by AutoTest");
         TimeUnit.SECONDS.sleep(2);
         driver.findElement(By.cssSelector("div > button.btn.btn-primary.ml-2 > span:nth-child(1)")).click();
         TimeUnit.SECONDS.sleep(2);

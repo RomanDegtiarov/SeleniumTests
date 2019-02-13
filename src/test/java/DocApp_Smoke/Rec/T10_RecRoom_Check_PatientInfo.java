@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class T06_RecRoom_Check_PatientInfo extends TestBase{
+public class T10_RecRoom_Check_PatientInfo extends TestBase{
     @Test
     public void Room_Check() throws InterruptedException {
         Doctor_Login();

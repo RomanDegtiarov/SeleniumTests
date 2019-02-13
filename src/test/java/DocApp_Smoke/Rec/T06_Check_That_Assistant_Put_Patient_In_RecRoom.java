@@ -37,6 +37,7 @@ public class T06_Check_That_Assistant_Put_Patient_In_RecRoom extends TestBase {
         }
 
 // Closing rec.room
+        TimeUnit.SECONDS.sleep(2);
         driver.findElement(By.cssSelector("div > a[ng-href='/#/recovery_rooms']")).click();
     }
 }
