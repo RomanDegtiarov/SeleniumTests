@@ -1,7 +1,6 @@
 package DocApp_Smoke.Rec;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,17 +10,19 @@ import java.io.IOException;
 
 public class T01_Consultation_Report extends TestBase {
     @Test
-    public void Cons_Report() {
+    public void Cons_Report(){
         Doctor_Login();
 //Select occupied room
         driver.findElement(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]")).click();
 
 //If appears pop-up "Registration not completed"
-        if (isElementPresent(By.cssSelector("md-dialog[aria-label=\"Consultation not submitted\"] > md-dialog-content input[type=\"text\"]")))
-        {
-            driver.findElement(By.cssSelector("md-dialog[aria-label=\"Consultation not submitted\"] > md-dialog-content input[type=\"text\"]")).sendKeys("AUTOTEST");
-            driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
-        }
+        Sign_Popup();
+
+//        if (isElementPresent(By.cssSelector("md-dialog[aria-label=\"Consultation not submitted\"] > md-dialog-content input[type=\"text\"]")))
+//        {
+//            driver.findElement(By.cssSelector("md-dialog[aria-label=\"Consultation not submitted\"] > md-dialog-content input[type=\"text\"]")).sendKeys("AUTOTEST");
+//            driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
+//        }
 //Navigate to PE: Specific Site
         wait.until(ExpectedConditions.visibilityOfElementLocated(
         By.cssSelector("md-menu-bar > md-menu > button > md-icon[md-font-icon*=\"stethoscope\"]")));

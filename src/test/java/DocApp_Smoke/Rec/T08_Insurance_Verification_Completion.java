@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class T08_Insurance_Verification_Completion extends TestBase {
-
     @Test
     public void Insurance_Verification() throws InterruptedException {
         Doctor_Login();
@@ -58,8 +57,6 @@ public class T08_Insurance_Verification_Completion extends TestBase {
         }
 
 //Define and Fill out required info
-//        wait.until(ExpectedConditions.elementToBeClickable(
-//                By.cssSelector("button#btn-no-dental-insurance > i")));
         WebElement spoke_with = driver.findElement(By.cssSelector("input[ng-model*=spoke_with].form-control.ng-invalid"));
         WebElement ins_name = driver.findElement(By.cssSelector("input#ins_name"));
         WebElement ssn = driver.findElement(By.cssSelector("input#ssn"));

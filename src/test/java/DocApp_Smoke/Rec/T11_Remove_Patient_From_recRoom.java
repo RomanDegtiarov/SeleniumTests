@@ -34,17 +34,18 @@ public class T11_Remove_Patient_From_recRoom extends TestBase {
         }
 
 //Remove Patient from room
-        driver.findElement(By.cssSelector("#content > div > div.text-center > div > button[ng-click*='show_room_status']")).click();
-//        driver.findElement(By.cssSelector("div.modal-content > div.modal-footer > button[ng-click*='update_room_state']")).click();
-//        driver.findElement(By.cssSelector("div.modal-content > div.modal-footer > button[ng-click*='update_room_state']")).click();
+        driver.findElement(By.cssSelector("div.text-center > h3 > span.btn.btn-primary.ng-binding")).click();
+        driver.findElement(By.cssSelector("#room_ready_status_button")).click();
+        driver.findElement(By.cssSelector("div.modal-dialog div.modal-footer > button[ng-click*=\"update_room\"]")).click();
+        driver.findElement(By.cssSelector("div.modal-footer > button[ng-click*=\"update\"]")).click();
 
 //Comparing quantity of occupied rooms before and after test execution
-//        List<WebElement> aft = driver.findElements(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]"));
-//        int b = bef.size();
-//        int a = aft.size();
-//        if (a == b - 1) {
-//            System.out.println("Occupied rec.rooms before test run: " + bef.size());
-//            System.out.println("Occupied rec.rooms after test run: " + aft.size());
-//        }
+        List<WebElement> aft = driver.findElements(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]"));
+        int b = bef.size();
+        int a = aft.size();
+        if (a == b - 1) {
+            System.out.println("Occupied rec.rooms before test run: " + bef.size());
+            System.out.println("Occupied rec.rooms after test run: " + aft.size());
+        }
     }
 }

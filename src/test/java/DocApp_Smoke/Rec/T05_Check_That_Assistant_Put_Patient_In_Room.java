@@ -7,13 +7,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
     @Test
-    public void Patient_In_Room_Check() {
+    public void Patient_In_Room_Check(){
         Assistant_Login();
 
 // Select Doctor
@@ -28,10 +29,11 @@ public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
 //Put Patient in room
         driver.findElement(By.cssSelector("div > table > tbody > tr[ng-repeat] > td > button.btn.ng-scope:not([class*=ng-hide])")).click();
         driver.findElement(By.cssSelector("div.modal-footer > button[ng-click*=confirm_patient]")).click();
-        if(isElementPresent(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]"))){
-            driver.findElement(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]")).sendKeys("AutoTest");
-            driver.findElement(By.cssSelector("md-dialog-actions > button.md-ink-ripple[ng-click=\"apply(initials)\"]")).click();
-        }
+        Sign_Popup();
+//        if(isElementPresent(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]"))){
+//            driver.findElement(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]")).sendKeys("AutoTest");
+//            driver.findElement(By.cssSelector("md-dialog-actions > button.md-ink-ripple[ng-click=\"apply(initials)\"]")).click();
+//        }
         if(isElementPresent(By.cssSelector("div.modal-dialog"))){
             driver.findElement(By.cssSelector("div.modal-body div:nth-child(2) > button")).click();
             driver.findElement(By.cssSelector("td > a[callback*=set_parent]")).click();

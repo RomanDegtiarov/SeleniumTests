@@ -5,7 +5,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,10 +18,24 @@ public class TestBase {
 //    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
     public static WebDriver driver;
     public static WebDriverWait wait;
+    public static WebElement checkout;
 
-
+//Common locators and methods
     String DocApp =("http://docdev.dentalelink.com");
 
+    public void Sign_Popup(){
+        var testinput = "md-dialog > md-dialog-content input";
+        while (isElementPresent(By.cssSelector(testinput))){
+            driver.findElement(By.cssSelector("md-dialog > md-dialog-content input")).sendKeys("AUTOTEST");
+            driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")));
+//            TimeUnit.SECONDS.sleep(1);
+        }
+    }
+    static WebElement getcheckout(){
+        checkout = driver.findElement(By.cssSelector("md-menu > button.menu-dropdown > md-icon[md-font-icon*='fa-users']"));
+        return checkout;
+    }
     public void Doctor_Login() {
 
 //Login as Doctor
@@ -51,7 +67,6 @@ public class TestBase {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("md-content._md > div")));
     }
 
-
     public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);
@@ -62,8 +77,9 @@ public class TestBase {
             return false;
         }
     }
+
     @Before
-    public void start() throws MalformedURLException {
+        public void start() throws MalformedURLException {
 //        DesiredCapabilities capability = new DesiredCapabilities();
 //        capability.setBrowserName("chrome");
 //        capability.setPlatform(Platform.WINDOWS);
@@ -78,12 +94,10 @@ public class TestBase {
 ////            wait = new WebDriverWait(driver,10);
 ////            return;
 ////        }
-
         driver = new ChromeDriver();
-//        tlDriver.set(driver);
         wait = new WebDriverWait(driver,10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().fullscreen();
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+//        driver.manage().window().fullscreen();
 
 //       Runtime.getRuntime().addShutdownHook(
 //           new Thread(() -> {driver.quit(); driver = null;}));
