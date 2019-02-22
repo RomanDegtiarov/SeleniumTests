@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertFalse;
@@ -16,7 +17,6 @@ public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
     @Test
     public void Patient_In_Room_Check(){
         Assistant_Login();
-
 // Select Doctor
         driver.findElement(By.cssSelector("div md-input-container md-select[ng-model=doc_title]")).click();
         wait.until(ExpectedConditions.elementToBeClickable(
@@ -25,15 +25,12 @@ public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
 
 // Select empty room
         driver.findElement(By.xpath("//md-content/div/div/a[not(contains(@class,'ng-'))]")).click();
+        List<WebElement> bef = driver.findElements(By.cssSelector("a[md-colors*=room_occupied]"));
 
 //Put Patient in room
         driver.findElement(By.cssSelector("div > table > tbody > tr[ng-repeat] > td > button.btn.ng-scope:not([class*=ng-hide])")).click();
         driver.findElement(By.cssSelector("div.modal-footer > button[ng-click*=confirm_patient]")).click();
         Sign_Popup();
-//        if(isElementPresent(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]"))){
-//            driver.findElement(By.cssSelector("md-dialog div.layout-align-center-center > input[ng-model=\"initials\"]")).sendKeys("AutoTest");
-//            driver.findElement(By.cssSelector("md-dialog-actions > button.md-ink-ripple[ng-click=\"apply(initials)\"]")).click();
-//        }
         if(isElementPresent(By.cssSelector("div.modal-dialog"))){
             driver.findElement(By.cssSelector("div.modal-body div:nth-child(2) > button")).click();
             driver.findElement(By.cssSelector("td > a[callback*=set_parent]")).click();
@@ -55,6 +52,21 @@ public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
             FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Put_Patient_In_Room"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
+        }
+
+// Closing room
+        driver.findElement(By.cssSelector("a[href='/#/rooms']")).click();
+
+//Comparing quantity of occupied rooms before and after test execution
+        List<WebElement> aft = driver.findElements(By.cssSelector("a[md-colors*=room_occupied]"));
+        int b = bef.size();
+        int a = aft.size();
+        if (a == b + 1) {
+            System.out.println("Occupied rooms before test run: " + bef.size());
+            System.out.println("Occupied rooms after test run: " + aft.size());
+        }
+        else {
+            throw new java.lang.Error("Something went wrong");
         }
     }
 }

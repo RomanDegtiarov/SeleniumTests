@@ -47,5 +47,8 @@ public class T11_Remove_Patient_From_recRoom extends TestBase {
             System.out.println("Occupied rec.rooms before test run: " + bef.size());
             System.out.println("Occupied rec.rooms after test run: " + aft.size());
         }
+        else {
+            throw new java.lang.Error("Something went wrong");
+        }
     }
 }

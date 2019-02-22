@@ -23,7 +23,6 @@ public class Treatment_Estimation extends TestBase {
 //                ("md-menu > button.menu-dropdown > md-icon[md-font-icon*='fa-users']")));
         WebElement checkout = TestBase.getcheckout();
         checkout.click();
-
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
                 ("#menu_container_1 > md-menu-content > md-menu-item:nth-child(1)")));
         driver.findElement(By.cssSelector("#menu_container_1 > md-menu-content > md-menu-item:nth-child(1)")).click();

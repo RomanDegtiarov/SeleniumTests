@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
@@ -22,14 +23,12 @@ public class TestBase {
 
 //Common locators and methods
     String DocApp =("http://docdev.dentalelink.com");
-
     public void Sign_Popup(){
         var testinput = "md-dialog > md-dialog-content input";
         while (isElementPresent(By.cssSelector(testinput))){
             driver.findElement(By.cssSelector("md-dialog > md-dialog-content input")).sendKeys("AUTOTEST");
             driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")));
-//            TimeUnit.SECONDS.sleep(1);
         }
     }
     static WebElement getcheckout(){
@@ -95,8 +94,8 @@ public class TestBase {
 ////            return;
 ////        }
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,10);
-        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver,6);
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 //        driver.manage().window().fullscreen();
 
 //       Runtime.getRuntime().addShutdownHook(

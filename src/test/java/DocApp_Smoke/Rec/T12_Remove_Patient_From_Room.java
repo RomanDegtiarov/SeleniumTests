@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class T12_Remove_Patient_From_Room extends TestBase {
     @Test
-    public void Remove_Patient() throws InterruptedException {
+    public void Remove_Patient(){
         Assistant_Login();
 //Select occupied room & count occupied rooms
         List<WebElement> bef = driver.findElements(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]"));
@@ -46,6 +46,9 @@ public class T12_Remove_Patient_From_Room extends TestBase {
         if (a == b - 1) {
             System.out.println("Occupied rooms before test run: " + bef.size());
             System.out.println("Occupied rooms after test run: " + aft.size());
+        }
+        else {
+            throw new java.lang.Error("Something went wrong");
         }
     }
 }
