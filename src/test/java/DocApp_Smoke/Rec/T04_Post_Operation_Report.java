@@ -18,33 +18,24 @@ public class T04_Post_Operation_Report extends TestBase {
     public void Post_Rec() throws InterruptedException {
         Doctor_Login();
 //Click on button "Rec.Room" in header
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")));
         driver.findElement(By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")).click();
 
 // Click on some rec.room with patient
         TimeUnit.SECONDS.sleep(3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
         driver.findElement(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")).click();
 
 // Open Post Operation Report
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("div.modal-content > div.modal-footer > a[ng-href*=\"/reports/#/rr_report\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.modal-content > div.modal-footer > a[ng-href*=\"/reports/#/rr_report\"]")));
         driver.findElement(By.cssSelector("div.modal-content > div.modal-footer > a[ng-href*=\"/reports/#/rr_report\"]")).click();
 
 // Zoom out and take a screenshot
-        String currentTab = driver.getWindowHandle();
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(currentTab)){
-                driver.switchTo().window(tab);
-            }
-        }
+        Locator.Active_Tab_Switch();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.body.style.zoom='80%'");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {

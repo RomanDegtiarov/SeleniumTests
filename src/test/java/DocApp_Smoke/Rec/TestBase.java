@@ -16,10 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 public class TestBase {
-//    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
     public static WebDriver driver;
     public static WebDriverWait wait;
-    public static WebElement checkout;
 
 //Common locators and methods
     String DocApp =("http://docdev.dentalelink.com");
@@ -30,10 +28,6 @@ public class TestBase {
             driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")));
         }
-    }
-    static WebElement getcheckout(){
-        checkout = driver.findElement(By.cssSelector("md-menu > button.menu-dropdown > md-icon[md-font-icon*='fa-users']"));
-        return checkout;
     }
     public void Doctor_Login() {
 
@@ -65,7 +59,6 @@ public class TestBase {
         driver.findElement(By.xpath("//md-dialog[@aria-describedby='dialogContent_10']/md-dialog-actions/button")).click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("md-content._md > div")));
     }
-
     public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);
@@ -83,23 +76,19 @@ public class TestBase {
 //        capability.setBrowserName("chrome");
 //        capability.setPlatform(Platform.WINDOWS);
 //        driver = new RemoteWebDriver(new URL("http://192.168.0.104:4444/wd/hub"),capability);
-//
 //        URL server = new URL("http://192.168.0.104:4444/wd/hub");
 //        System.out.println("Connecting to " + server);
 //        WebDriver driver = new RemoteWebDriver(server, capability);
 
 //        if (tlDriver.get() != null){
-////            driver = tlDriver.get();
-////            wait = new WebDriverWait(driver,10);
-////            return;
-////        }
+//            driver = tlDriver.get();
+//            wait = new WebDriverWait(driver,10);
+//            return;
+//        }
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,6);
+        wait = new WebDriverWait(driver,10);
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 //        driver.manage().window().fullscreen();
-
-//       Runtime.getRuntime().addShutdownHook(
-//           new Thread(() -> {driver.quit(); driver = null;}));
     }
 //    @After
 //    public void stop() {

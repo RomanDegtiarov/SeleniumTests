@@ -9,18 +9,13 @@ import java.util.concurrent.TimeUnit;
 
 public class T10_RecRoom_Check_PatientInfo extends TestBase{
     @Test
-    public void Room_Check() throws InterruptedException {
+    public void Room_Check(){
         Doctor_Login();
-//Click on button "Rec.Room" in header
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")));
-        driver.findElement(By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")).click();
+        Locator.recovery_rooms();
 
 // Click on some rec.room with patient
-        TimeUnit.SECONDS.sleep(3);
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
-        driver.findElement(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//md-content/div/div/a[contains(@class,'recovery')][contains(@md-colors,'room_occupied')]")));
+        driver.findElement(By.xpath("//md-content/div/div/a[contains(@md-colors,'room_occupied')]")).click();
 
 //Taking Screenshot
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -30,6 +25,6 @@ public class T10_RecRoom_Check_PatientInfo extends TestBase{
             x.printStackTrace();
         }
 // Closing rec.room
-        driver.findElement(By.xpath("//div[@class=\"modal-footer\"]/button[@class=\"btn btn-default\"]")).click();
+        driver.findElement(By.xpath("//div[@class='modal-footer']/button[@class='btn btn-default']")).click();
     }
 }

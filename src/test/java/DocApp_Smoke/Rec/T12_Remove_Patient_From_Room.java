@@ -1,11 +1,9 @@
 package DocApp_Smoke.Rec;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class T12_Remove_Patient_From_Room extends TestBase {
     @Test
@@ -19,7 +17,7 @@ public class T12_Remove_Patient_From_Room extends TestBase {
         }
 
 //Remove Patient from room
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#main-content")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.text-center.ng-scope.md-whiteframe-3dp > md-content > h3 > span.btn.btn-primary.ng-binding")));
         driver.findElement(By.cssSelector("div.text-center.ng-scope.md-whiteframe-3dp > md-content > h3 > span.btn.btn-primary.ng-binding")).click();
         driver.findElement(By.cssSelector("#room_ready_status_button")).click();
 ////        if (isElementPresent(By.cssSelector("md-content._md > div button.font20.ng-scope[ng-click*=\"show_room_status\"]"))){
@@ -41,9 +39,7 @@ public class T12_Remove_Patient_From_Room extends TestBase {
 
 //Comparing quantity of occupied rooms before and after test execution
         List<WebElement> aft = driver.findElements(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]"));
-        int b = bef.size();
-        int a = aft.size();
-        if (a == b - 1) {
+        if (aft.size() == bef.size() - 1) {
             System.out.println("Occupied rooms before test run: " + bef.size());
             System.out.println("Occupied rooms after test run: " + aft.size());
         }

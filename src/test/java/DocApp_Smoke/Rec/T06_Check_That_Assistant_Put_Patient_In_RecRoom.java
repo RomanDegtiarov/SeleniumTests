@@ -22,7 +22,7 @@ public class T06_Check_That_Assistant_Put_Patient_In_RecRoom extends TestBase {
                 By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")));
         driver.findElement(By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")).click();
 
-// Select empty room
+//Select empty room
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//md-content/div/div/a[not(contains(@class,'ng-'))]")));
         List<WebElement> bef = driver.findElements(By.cssSelector("a[md-colors*=room_occupied]"));
         driver.findElement(By.xpath("//md-content/div/div/a[not(contains(@class,'ng-'))]")).click();

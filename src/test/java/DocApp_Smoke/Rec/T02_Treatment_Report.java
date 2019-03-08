@@ -15,11 +15,9 @@ public class T02_Treatment_Report extends TestBase {
         driver.findElement(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]")).click();
 
 //Navigate to Op.Notes page
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("md-menu-bar > a.md-ink-ripple > md-icon.fa-heartbeat")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("md-menu-bar > a.md-ink-ripple > md-icon.fa-heartbeat")));
         driver.findElement(By.cssSelector("md-menu-bar > a.md-ink-ripple > md-icon.fa-heartbeat")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("div > ul > li[index*=discharge]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div > ul > li[index*=discharge]")));
         driver.findElement(By.cssSelector("div > ul > li[index*=discharge]")).click();
 
 //Open Treatment Report
@@ -28,12 +26,7 @@ public class T02_Treatment_Report extends TestBase {
         executor.executeScript("arguments[0].click();", Treatm_report);
 
 // Zoom out and take a screenshot
-        String currentTab = driver.getWindowHandle();
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(currentTab)){
-                driver.switchTo().window(tab);
-            }
-        }
+        Locator.Active_Tab_Switch();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.body.style.zoom='70%'");
 

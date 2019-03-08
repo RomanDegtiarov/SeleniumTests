@@ -4,14 +4,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class T05_Check_That_Assistant_Put_Patient_In_Room extends TestBase {
     @Test

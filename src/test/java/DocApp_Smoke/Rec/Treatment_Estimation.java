@@ -21,8 +21,7 @@ public class Treatment_Estimation extends TestBase {
         driver.findElement(By.cssSelector(".md-menu-toolbar > a > span")).click();
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector
 //                ("md-menu > button.menu-dropdown > md-icon[md-font-icon*='fa-users']")));
-        WebElement checkout = TestBase.getcheckout();
-        checkout.click();
+        Locator.checkout();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
                 ("#menu_container_1 > md-menu-content > md-menu-item:nth-child(1)")));
         driver.findElement(By.cssSelector("#menu_container_1 > md-menu-content > md-menu-item:nth-child(1)")).click();
@@ -107,7 +106,7 @@ public class Treatment_Estimation extends TestBase {
         driver.findElement(By.cssSelector("button[ng-click*=back_to_needest]")).click();
 
 //Navigate to checkout
-        checkout.click();
+        Locator.checkout();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector
                 ("#menu_container_1 > md-menu-content > md-menu-item:nth-child(3)")));
         driver.findElement(By.cssSelector("#menu_container_1 > md-menu-content > md-menu-item:nth-child(3)")).click();

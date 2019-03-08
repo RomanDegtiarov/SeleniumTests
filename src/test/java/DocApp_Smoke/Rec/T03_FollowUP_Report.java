@@ -17,11 +17,9 @@ public class T03_FollowUP_Report extends TestBase{
         driver.findElement(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]")).click();
 
 //Navigate to Follow Up page
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")));
         driver.findElement(By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("div > ul > li[heading=Disposition]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div > ul > li[heading=Disposition]")));
         driver.findElement(By.cssSelector("div > ul > li[heading=Disposition]")).click();
 
 //Open Follow Up report
@@ -30,17 +28,11 @@ public class T03_FollowUP_Report extends TestBase{
         executor.executeScript("arguments[0].click();", Follow_report);
 
 // Zoom out and take a screenshot
-        String currentTab = driver.getWindowHandle();
-        for (String tab : driver.getWindowHandles()) {
-            if (!tab.equals(currentTab)){
-                driver.switchTo().window(tab);
-            }
-        }
+        Locator.Active_Tab_Switch();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.body.style.zoom='70%'");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - FollowUp_Report"+ System.currentTimeMillis() +".png"));

@@ -11,18 +11,14 @@ import java.util.concurrent.TimeUnit;
 public class T11_Remove_Patient_From_recRoom extends TestBase {
 
     @Test
-    public void Remove_Rec() throws InterruptedException {
+    public void Remove_Rec(){
         Assistant_Login();
-//Click on button "Rec.Room" in header
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")));
-        driver.findElement(By.xpath("//md-menu-bar/a[contains(@href,'recovery_rooms')]")).click();
-        TimeUnit.SECONDS.sleep(3);
+        Locator.recovery_rooms();
 
 // Click on some rec.room with patient
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
         List<WebElement> bef = driver.findElements(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]"));
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]")));
 
         WebElement no_dental_insurance_button = driver.findElement(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]/h2"));
         JavascriptExecutor executor = (JavascriptExecutor)driver;
@@ -41,9 +37,7 @@ public class T11_Remove_Patient_From_recRoom extends TestBase {
 
 //Comparing quantity of occupied rooms before and after test execution
         List<WebElement> aft = driver.findElements(By.xpath("//md-content/div/div/a[contains(@md-colors,\"room_occupied\")]"));
-        int b = bef.size();
-        int a = aft.size();
-        if (a == b - 1) {
+        if (aft.size() == bef.size() - 1) {
             System.out.println("Occupied rec.rooms before test run: " + bef.size());
             System.out.println("Occupied rec.rooms after test run: " + aft.size());
         }
