@@ -20,7 +20,7 @@ public class T10_RecRoom_Check_PatientInfo extends TestBase{
 //Taking Screenshot
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-        FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Rec.Room"+ System.currentTimeMillis() +".png"));
+        FileUtils.copyFile(scrFile, new File(Screen_Path +" - Rec.Room"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

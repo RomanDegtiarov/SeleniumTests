@@ -15,12 +15,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
 public class TestBase {
+
     public static WebDriver driver;
     public static WebDriverWait wait;
 
 //Common locators and methods
     String DocApp =("http://docdev.dentalelink.com");
+//    String Screen_Path = ("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot");
+    String Screen_Path = ("C:\\Users\\romad\\Desktop\\Upwork\\Screenshots\\Selenium\\");
     public void Sign_Popup(){
         var testinput = "md-dialog > md-dialog-content input";
         while (isElementPresent(By.cssSelector(testinput))){
@@ -59,6 +63,7 @@ public class TestBase {
         driver.findElement(By.xpath("//md-dialog[@aria-describedby='dialogContent_10']/md-dialog-actions/button")).click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("md-content._md > div")));
     }
+
     public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);

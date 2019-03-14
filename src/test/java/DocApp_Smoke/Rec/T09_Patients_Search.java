@@ -38,7 +38,7 @@ public class T09_Patients_Search extends TestBase{
         js.executeScript("document.body.style.zoom='60%'");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Patients_Search_Patient_Card"+ System.currentTimeMillis() +".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path +" - Patients_Search_Patient_Card"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

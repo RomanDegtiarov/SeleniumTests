@@ -17,8 +17,8 @@ public class T12_Remove_Patient_From_Room extends TestBase {
         }
 
 //Remove Patient from room
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.text-center.ng-scope.md-whiteframe-3dp > md-content > h3 > span.btn.btn-primary.ng-binding")));
-        driver.findElement(By.cssSelector("div.text-center.ng-scope.md-whiteframe-3dp > md-content > h3 > span.btn.btn-primary.ng-binding")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("h3 > span[ng-click*='show_room_status']")));
+        driver.findElement(By.cssSelector("h3 > span[ng-click*='show_room_status']")).click();
         driver.findElement(By.cssSelector("#room_ready_status_button")).click();
 ////        if (isElementPresent(By.cssSelector("md-content._md > div button.font20.ng-scope[ng-click*=\"show_room_status\"]"))){
 ////                driver.findElement(By.cssSelector("md-content._md > div button.font20.ng-scope[ng-click*=\"show_room_status\"]")).click();

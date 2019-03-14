@@ -80,7 +80,7 @@ public class T07_Patient_Portal_AND_Patient_Invite extends TestBase{
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.card-header > div > i.fa-file-text")));
 //        File scrFile_02 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 //        try {
-//            FileUtils.copyFile(scrFile_02, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Invite_Patient_From_WinOMS"+ System.currentTimeMillis() +".png"));
+//            FileUtils.copyFile(scrFile_02, new File(Screen_Path +" - Invite_Patient_From_WinOMS"+ System.currentTimeMillis() +".png"));
 //        } catch (IOException x) {
 //            x.printStackTrace();
 //        }

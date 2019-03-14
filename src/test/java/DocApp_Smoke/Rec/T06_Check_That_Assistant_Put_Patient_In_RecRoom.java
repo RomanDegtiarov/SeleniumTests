@@ -35,7 +35,7 @@ public class T06_Check_That_Assistant_Put_Patient_In_RecRoom extends TestBase {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[ng-click='showPopover()']")));
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" + " - Put_Patient_In_RecRoom_Report" + System.currentTimeMillis() + ".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path + " - Put_Patient_In_RecRoom_Report" + System.currentTimeMillis() + ".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

@@ -34,7 +34,7 @@ public class T02_Treatment_Report extends TestBase {
                 By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Treatment_Report"+ System.currentTimeMillis() +".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path +" - Treatment_Report"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

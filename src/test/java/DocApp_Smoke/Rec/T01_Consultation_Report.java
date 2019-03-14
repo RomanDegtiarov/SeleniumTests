@@ -20,7 +20,6 @@ public class T01_Consultation_Report extends TestBase {
         WebElement consult = driver.findElement(By.cssSelector("md-menu-bar > md-menu > button > md-icon[md-font-icon*=\"stethoscope\"]"));
         JavascriptExecutor executor_01 = (JavascriptExecutor)driver;
         executor_01.executeScript("arguments[0].click();", consult);
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("md-menu-content > md-menu-item:nth-child(3)")));
         driver.findElement(By.cssSelector("md-menu-content > md-menu-item:nth-child(3)")).click();
         WebElement summary = driver.findElement(By.cssSelector("div > ul > li[select*=\"validate_before_summary\"]"));
@@ -40,7 +39,7 @@ public class T01_Consultation_Report extends TestBase {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Consultation_Report"+ System.currentTimeMillis() +".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path +" - Consultation_Report"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

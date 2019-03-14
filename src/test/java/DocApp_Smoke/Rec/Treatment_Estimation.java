@@ -36,14 +36,7 @@ public class Treatment_Estimation extends TestBase {
         if (isElementPresent(By.cssSelector("div.modal-dialog"))){
          driver.findElement(By.cssSelector("div.modal-footer > button[ng-click=\"apply_initial_iv()\"]")).click();
         }
-
-//Doctor's sign pop-up
-        var testinput = "md-dialog > md-dialog-content input";
-        while (isElementPresent(By.cssSelector(testinput))){
-            driver.findElement(By.cssSelector("md-dialog > md-dialog-content input")).sendKeys("AUTOTEST");
-            driver.findElement(By.cssSelector("md-dialog-actions > button[ng-click=\"apply(initials)\"]")).click();
-            TimeUnit.SECONDS.sleep(1);
-        }
+        Sign_Popup();
 
 //Prepare Treatment Plan for sign
         driver.findElement(By.cssSelector("md-checkbox[aria-label=\"General anesthesia\"]")).click();
@@ -126,7 +119,7 @@ public class Treatment_Estimation extends TestBase {
         TimeUnit.SECONDS.sleep(3);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Treatment_Estimate"+ System.currentTimeMillis() +".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path +" - Treatment_Estimate"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }

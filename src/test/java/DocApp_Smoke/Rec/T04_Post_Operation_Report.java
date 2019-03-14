@@ -39,7 +39,7 @@ public class T04_Post_Operation_Report extends TestBase {
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("C:\\Users\\Roma&Nastya\\Desktop\\Upwork\\Screenshots\\Selenium\\screenshot" +" - Post_Operation_Report"+ System.currentTimeMillis() +".png"));
+            FileUtils.copyFile(scrFile, new File(Screen_Path +" - Post_Operation_Report"+ System.currentTimeMillis() +".png"));
         } catch (IOException x) {
             x.printStackTrace();
         }
