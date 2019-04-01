@@ -1,13 +1,13 @@
 package DocApp_Smoke.Rec;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class T03_FollowUP_Report extends TestBase{
     @Test
@@ -17,9 +17,9 @@ public class T03_FollowUP_Report extends TestBase{
         driver.findElement(By.xpath("//md-content/div/div/a[contains(@class,'ng-scope')]")).click();
 
 //Navigate to Follow Up page
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")));
+        wait.until(visibilityOfElementLocated(By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")));
         driver.findElement(By.cssSelector("md-menu-bar > a.md-ink-ripple[ng-href*='/#/fu_surgical']")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div > ul > li[heading=Disposition]")));
+        wait.until(visibilityOfElementLocated(By.cssSelector("div > ul > li[heading=Disposition]")));
         driver.findElement(By.cssSelector("div > ul > li[heading=Disposition]")).click();
 
 //Open Follow Up report
@@ -32,7 +32,7 @@ public class T03_FollowUP_Report extends TestBase{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.body.style.zoom='70%'");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
+        wait.until(visibilityOfElementLocated(By.cssSelector("div.col-xs-6 > div[ng-style*=image]")));
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(Screen_Path +" - FollowUp_Report"+ System.currentTimeMillis() +".png"));
